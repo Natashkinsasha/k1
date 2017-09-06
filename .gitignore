@@ -1,6 +1,4 @@
-.idea/k1.iml
-.idea/modules.xml
-.idea/workspace.xml
+.idea
 node_modules/
 price.csv
 price/
