@@ -68,6 +68,7 @@ driver
         return new Promise(function (resolve, reject) {
             var tmp = data.split('\n');
             tmp.shift();
+            tmp.pop();
             var price = tmp.reduce(function (price, item) {
                 item = item.split(';');
                 price.push({
@@ -129,8 +130,6 @@ driver
                                     item.competitorCost = parseInt(costString.replace(/\D+/g, "")) / 100;
                                     item.dumping = item.myCost - item.competitorCost;
                                     item.time = new Date();
-                                    console.log(item.dumping);
-                                    console.log(item.dumping !== 0);
                                     if (item.dumping !== 0) {
                                         fs.appendFileSync(fileName, "\n" + util.inspect(item));
                                     }
@@ -142,5 +141,8 @@ driver
                         .catch(console.log)
                 }
             })
+    })
+    .then(function () {
+        console.log('Скрипт закончил свое выполнение')
     })
     .catch(console.log);
