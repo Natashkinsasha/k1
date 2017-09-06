@@ -1,17 +1,16 @@
 var Promise = require('bluebird');
-var fileSave = require('file-save');
+var csv = require('csvtojson');
+var config = require('config');
 var fs = require('fs');
 var util = require('util');
+var windows1251 = require('windows-1251');
 var webdriver = require('selenium-webdriver');
 var chrome = require('selenium-webdriver/chrome');
 var path = require('chromedriver').path;
 var By = webdriver.By;
-var DeathByCaptcha = require('deathbycaptcha');
-
 var service = new chrome.ServiceBuilder(path).build();
 chrome.setDefaultService(service);
 
-var dbc = new DeathByCaptcha("Natashkinsasha", "Natashkin6426384");
 
 var driver = new webdriver.Builder()
     .withCapabilities(webdriver.Capabilities.chrome())
@@ -53,72 +52,95 @@ function saveScreenshot() {
 
 driver.saveScreenshot = saveScreenshot.bind(driver);
 
-const price = [{name: 'iPhone 7', myCost: 132000},
-    {name: 'iPhone 6', myCost: 85000},
-    {name: 'iPhone 5s', myCost: 57000},
-    {name: 'iPhone 5', myCost: 47000}]
-;
+
+var delay = config.get('delay');
+var startWith = config.get('startWith');
 
 driver
-    .get('https://1k.by/users/login')
+    .get('https://phone.1k.by/mobile/')
     .then(function () {
-        return driver.takeScreenshot();
+        return Promise
+            .promisify(fs.readFile)('./price.csv', 'binary');
     })
-    .then(function (screenshot) {
-        return driver.saveScreenshot('./captcha.png')
-    })
+    .then(windows1251.decode)
     .then(function (data) {
-        console.log(data)
+        console.log('Фаил с ценами открыт!!!');
         return new Promise(function (resolve, reject) {
-            return dbc.solve(data, function (err, id, solution) {
-                if (err) return reject(err);
-                return resolve(solution);
-            });
+            var tmp = data.split('\n');
+            tmp.shift();
+            var price = tmp.reduce(function (price, item) {
+                item = item.split(';');
+                price.push({
+                    name: item[2] && item[2].replace(/"/g, ''),
+                    myCost: item[4] && parseInt(item[4].replace(/\D+/g, "")) / 100
+                });
+                return price;
+            }, []);
+
+            return resolve(price)
         });
+
     })
-    .then(function (solution) {
-        console.log(solution);
+    .then(function (price) {
+        var fileName = ('./price/d' + new Date().toLocaleDateString() + 't' + new Date().toLocaleTimeString().replace(new RegExp(':', 'g'), '-') + '.txt');
+        fs.writeFileSync(fileName, 'start', {encoding: 'utf-8', flag: 'w'});
+        console.log('Фаил для отчета открыт!!!');
+        return Promise
+            .resolve(price)
+            .map(function (item, i) {
+                if (startWith <= i) {
+                    var goodName = item.name;
+                    return driver
+                        .findElement(By.id('keywords'))
+                        .then(function (input) {
+                            return input.clear()
+                                .then(function () {
+                                    return input.sendKeys(goodName)
+                                })
+                        })
+                        .then(function () {
+                            return Promise.delay(delay);
+                        })
+                        .then(function () {
+                            return driver.findElement(By.name('submitbutton')).click();
+                        })
+                        .then(function () {
+                            if (i === 0) {
+                                return driver.selectOption(By.name('order'), 'priceasc');
+                            }
+                            return true;
+                        })
+                        .then(function () {
+                            return Promise.resolve(driver
+                                .findElements(By.className('product_block')))
+                                .map(function (good) {
+                                    return Promise.props({
+                                        cost: good.findElement(By.className('pr-price_mark')).getText(),
+                                        name: good.findElement(By.className('pr-line_name')).getText()
+                                    })
+                                })
+                                .then(function (goods) {
+                                    return goods
+                                        .filter(function (good) {
+                                            return good.name === goodName;
+                                        })[0].cost
+                                })
+                                .then(function (costString) {
+                                    item.competitorCost = parseInt(costString.replace(/\D+/g, "")) / 100;
+                                    item.dumping = item.myCost - item.competitorCost;
+                                    item.time = new Date();
+                                    console.log(item.dumping);
+                                    console.log(item.dumping !== 0);
+                                    if (item.dumping !== 0) {
+                                        fs.appendFileSync(fileName, "\n" + util.inspect(item));
+                                    }
+                                    console.log(item);
+                                    return item;
+                                });
+
+                        })
+                        .catch(console.log)
+                }
+            })
     })
-    .catch(function (err) {
-        console.log(err)
-    });
-/*driver
- .get('https://phone.1k.by/mobile/')
- .then(function () {
- return Promise.resolve(price)
- .map(function (item) {
- var goodName = item.name;
- return driver
- .findElement(By.id('keywords'))
- .then(function (input) {
- return input.clear()
- .then(function () {
- return input.sendKeys(goodName)
- })
- })
- .then(function () {
- return driver.findElement(By.name('submitbutton')).click();
- })
- .then(function () {
- return driver.selectOption(By.name('order'), 'priceasc');
- })
- .then(function () {
- return driver
- .findElement(By.className('pr-price_mark'))
- .then(function (costElement) {
- return costElement.getText()
- })
- .then(function (costString) {
- item.competitorCost = parseInt(costString.replace(/\D+/g, ""));
- return item;
- });
- })
- })
- })
- .then(function (newPrice) {
- var fileName = ('./price/d' + new Date().toLocaleDateString() + 't' + new Date().toLocaleTimeString().replace(new RegExp(':', 'g'), '-') + '.txt');
- return fs.writeFileSync(fileName, util.inspect(newPrice), {encoding: 'utf-8', flag: 'w'});
- })
- .catch(console.log);
- */
-//priceasc
+    .catch(console.log);

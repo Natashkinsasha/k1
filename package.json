@@ -12,9 +12,8 @@
     "bluebird": "^3.5.0",
     "chromedriver": "^2.31.0",
     "config": "^1.26.2",
-    "deathbycaptcha": "0.0.3",
-    "edgedriver": "^4.15063.0",
-    "file-save": "^0.2.0",
-    "selenium-webdriver": "^3.5.0"
+    "csvtojson": "^1.1.7",
+    "selenium-webdriver": "^3.5.0",
+    "windows-1251": "^1.0.0"
   }
 }
