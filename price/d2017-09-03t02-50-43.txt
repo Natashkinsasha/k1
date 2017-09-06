@@ -1,4 +1,0 @@
-[ { name: 'iPhone 7', myCost: 132000, competitorCost: 132000 },
-  { name: 'iPhone 6', myCost: 85000, competitorCost: 85000 },
-  { name: 'iPhone 5s', myCost: 57000, competitorCost: 57000 },
-  { name: 'iPhone 5', myCost: 47000, competitorCost: 47000 } ]
