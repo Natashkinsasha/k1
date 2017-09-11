@@ -56,11 +56,12 @@ driver.saveScreenshot = saveScreenshot.bind(driver);
 
 var delay = config.get('delay');
 var startWith = config.get('startWith');
+var url = config.get('url');
 
 driver
     .get('https://phone.1k.by/mobile/')
     .then(function(){
-        return axios.get('https://users.1k.by/shops-exportpricelist-7153-7.csv')
+        return axios.get(url);
     })
     .then(function (res) {
         console.log(res.data)
