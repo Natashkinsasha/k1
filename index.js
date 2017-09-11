@@ -1,5 +1,6 @@
 var Promise = require('bluebird');
 var csv = require('csvtojson');
+var axios = require('axios');
 var config = require('config');
 var fs = require('fs');
 var util = require('util');
@@ -58,9 +59,12 @@ var startWith = config.get('startWith');
 
 driver
     .get('https://phone.1k.by/mobile/')
-    .then(function () {
-        return Promise
-            .promisify(fs.readFile)('./price.csv', 'binary');
+    .then(function(){
+        return axios.get('https://users.1k.by/shops-exportpricelist-7153-7.csv')
+    })
+    .then(function (res) {
+        console.log(res.data)
+        return res.data;
     })
     .then(windows1251.decode)
     .then(function (data) {
@@ -131,7 +135,7 @@ driver
                                     item.dumping = item.myCost - item.competitorCost;
                                     item.time = new Date();
                                     if (item.dumping !== 0) {
-                                        fs.appendFileSync(fileName, "\n" + util.inspect(item));
+                                        fs.appendFileSync(fileName, "\n\r" + util.inspect(item));
                                     }
                                     console.log(item);
                                     return item;

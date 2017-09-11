@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.16.2",
     "bluebird": "^3.5.0",
     "chromedriver": "^2.31.0",
     "config": "^1.26.2",
