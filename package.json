@@ -6,7 +6,6 @@
   "scripts": {
     "start": "node index.js"
   },
-  "author": "",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.16.2",
@@ -14,6 +13,7 @@
     "chromedriver": "^2.31.0",
     "config": "^1.26.2",
     "csvtojson": "^1.1.7",
+    "optimist": "^0.6.1",
     "selenium-webdriver": "^3.5.0",
     "windows-1251": "^1.0.0"
   }

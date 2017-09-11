@@ -1,5 +1,6 @@
 var Promise = require('bluebird');
 var csv = require('csvtojson');
+var optimist = require('optimist');
 var axios = require('axios');
 var config = require('config');
 var fs = require('fs');
@@ -53,18 +54,16 @@ function saveScreenshot() {
 
 driver.saveScreenshot = saveScreenshot.bind(driver);
 
-
-var delay = config.get('delay');
-var startWith = config.get('startWith');
-var url = config.get('url');
-
+var argv = optimist.argv;
+var delay = argv.delay || config.get('delay');
+var startWith = argv.startWith || config.get('startWith');
+var url = argv.url || config.get('url');
 driver
     .get('https://phone.1k.by/mobile/')
     .then(function(){
         return axios.get(url);
     })
     .then(function (res) {
-        console.log(res.data)
         return res.data;
     })
     .then(windows1251.decode)
