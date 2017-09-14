@@ -1,0 +1,6 @@
+start
+{ name: 'Lenovo A6010 Plus 16Gb',
+  myCost: 240,
+  competitorCost: 165,
+  dumping: 75,
+  time: 2017-09-11T20:29:00.810Z }

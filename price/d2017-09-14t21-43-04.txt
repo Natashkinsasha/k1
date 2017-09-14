@@ -1,0 +1,151 @@
+start
+{ name: 'Alcatel One Touch 5045D Pixi 4 (5) Dual',
+  myCost: 162,
+  competitorCost: 153.25,
+  dumping: 8.75,
+  time: 2017-09-14T18:43:20.412Z }
+{ name: 'Alcatel One Touch 5080X Shine Lite',
+  myCost: 246.2,
+  competitorCost: 244.34,
+  dumping: 1.8599999999999852,
+  time: 2017-09-14T18:43:26.072Z }
+{ name: 'Apple iPhone 6S 16Gb',
+  myCost: 987,
+  competitorCost: 985.98,
+  dumping: 1.0199999999999818,
+  time: 2017-09-14T18:44:16.594Z }
+{ name: 'Apple iPhone 6S Plus 128Gb',
+  myCost: 1567,
+  competitorCost: 1500.96,
+  dumping: 66.03999999999996,
+  time: 2017-09-14T18:44:23.552Z }
+{ name: 'Asus Zenfone 3 64Gb (ZE520KL)',
+  myCost: 630,
+  competitorCost: 513,
+  dumping: 117,
+  time: 2017-09-14T18:45:09.498Z }
+{ name: 'HTC 10 Evo (Bolt) 32Gb',
+  myCost: 682,
+  competitorCost: 671,
+  dumping: 11,
+  time: 2017-09-14T18:46:19.110Z }
+{ name: 'HTC Desire 526G 8Gb',
+  myCost: 195,
+  competitorCost: 143.92,
+  dumping: 51.08000000000001,
+  time: 2017-09-14T18:46:36.850Z }
+{ name: 'HTC One M9 32Gb',
+  myCost: 640,
+  competitorCost: 637.79,
+  dumping: 2.2100000000000364,
+  time: 2017-09-14T18:49:34.873Z }
+{ name: 'HTC One X9',
+  myCost: 443,
+  competitorCost: 433,
+  dumping: 10,
+  time: 2017-09-14T18:50:40.408Z }
+{ name: 'Huawei P9 32Gb Dual (EVA-L19)',
+  myCost: 730,
+  competitorCost: 715,
+  dumping: 15,
+  time: 2017-09-14T18:56:17.275Z }
+{ name: 'Lenovo A6010 8Gb',
+  myCost: 210,
+  competitorCost: 207.82,
+  dumping: 2.180000000000007,
+  time: 2017-09-14T18:58:10.647Z }
+{ name: 'Lenovo A6010 Plus 16Gb Dual',
+  myCost: 240,
+  competitorCost: 208.07,
+  dumping: 31.930000000000007,
+  time: 2017-09-14T18:58:15.091Z }
+{ name: 'Lenovo P2 4Gb RAM 32Gb',
+  myCost: 571.3,
+  competitorCost: 571,
+  dumping: 0.2999999999999545,
+  time: 2017-09-14T18:58:43.631Z }
+{ name: 'Lenovo Vibe B (2016a40) 8Gb',
+  myCost: 164.5,
+  competitorCost: 156,
+  dumping: 8.5,
+  time: 2017-09-14T18:59:04.657Z }
+{ name: 'Lenovo Vibe C 8Gb (A2020a40)',
+  myCost: 175,
+  competitorCost: 169,
+  dumping: 6,
+  time: 2017-09-14T18:59:08.670Z }
+{ name: 'Lenovo Vibe K5 (A6020a40)',
+  myCost: 259,
+  competitorCost: 256.35,
+  dumping: 2.6499999999999773,
+  time: 2017-09-14T18:59:13.074Z }
+{ name: 'Lenovo Vibe K5 Plus (A6020a46)',
+  myCost: 280,
+  competitorCost: 269,
+  dumping: 11,
+  time: 2017-09-14T18:59:21.106Z }
+{ name: 'LG H522Y G4c',
+  myCost: 259,
+  competitorCost: 243,
+  dumping: 16,
+  time: 2017-09-14T19:00:24.068Z }
+{ name: 'LG H736 G4S',
+  myCost: 349,
+  competitorCost: 319,
+  dumping: 30,
+  time: 2017-09-14T19:00:29.300Z }
+{ name: 'LG H818 G4 Dual',
+  myCost: 562,
+  competitorCost: 550,
+  dumping: 12,
+  time: 2017-09-14T19:00:33.403Z }
+{ name: 'LG K220DS X power 16Gb',
+  myCost: 357,
+  competitorCost: 356.34,
+  dumping: 0.660000000000025,
+  time: 2017-09-14T19:01:00.951Z }
+{ name: 'Meizu M5 Note 16Gb',
+  myCost: 327.6,
+  competitorCost: 327,
+  dumping: 0.6000000000000227,
+  time: 2017-09-14T19:02:01.854Z }
+{ name: 'Nokia 520 Lumia',
+  myCost: 200,
+  competitorCost: 139,
+  dumping: 61,
+  time: 2017-09-14T19:04:13.761Z }
+{ name: 'Prestigio PSP5530 Grace Z5',
+  myCost: 197.6,
+  competitorCost: 192.76,
+  dumping: 4.840000000000003,
+  time: 2017-09-14T19:04:57.176Z }
+{ name: 'Samsung G800F Galaxy S5 Mini',
+  myCost: 380,
+  competitorCost: 378.98,
+  dumping: 1.0199999999999818,
+  time: 2017-09-14T19:06:47.176Z }
+{ name: 'Samsung J120F/DS Galaxy J1 (2016)',
+  myCost: 220,
+  competitorCost: 207,
+  dumping: 13,
+  time: 2017-09-14T19:09:06.479Z }
+{ name: 'Samsung J120H Galaxy J1 (2016)',
+  myCost: 220,
+  competitorCost: 219,
+  dumping: 1,
+  time: 2017-09-14T19:09:08.377Z }
+{ name: 'Samsung J320A Galaxy J3 (2016)',
+  myCost: 270,
+  competitorCost: 260,
+  dumping: 10,
+  time: 2017-09-14T19:09:25.312Z }
+{ name: 'Samsung J320F Galaxy J3 (2016)',
+  myCost: 269,
+  competitorCost: 249,
+  dumping: 20,
+  time: 2017-09-14T19:09:27.857Z }
+{ name: 'Sony Xperia E5 16Gb',
+  myCost: 310,
+  competitorCost: 307.45,
+  dumping: 2.5500000000000114,
+  time: 2017-09-14T19:10:47.673Z }

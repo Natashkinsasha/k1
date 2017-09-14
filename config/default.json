@@ -1,5 +1,6 @@
 {
   "delay": 0,
-  "startWith": 278,
-  "url":"https://users.1k.by/shops-exportpricelist-7153-7.csv"
+  "startWith": 0,
+  "urlk1":"https://users.1k.by/shops-exportpricelist-7153-7.csv",
+  "urlmigom":"http://www.migom.by/?block=mtex_seller_price&seller_id=2248&key_str=a35710e79ce29cda861a0f1b8a07414e&mode=csv"
 }

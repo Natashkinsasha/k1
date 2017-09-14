@@ -1,0 +1,26 @@
+start
+{ name: 'Lenovo A6010 Plus 16Gb',
+  myCost: 240,
+  competitorCost: 165,
+  dumping: 75,
+  time: 2017-09-06T20:41:50.840Z }
+{ name: 'Lenovo Vibe K5 Note (A7020a48)',
+  myCost: 367,
+  competitorCost: 364,
+  dumping: 3,
+  time: 2017-09-06T20:44:29.946Z }
+{ name: 'LG G4 H818P',
+  myCost: 530,
+  competitorCost: 490,
+  dumping: 40,
+  time: 2017-09-06T20:46:19.213Z }
+{ name: 'Meizu U20 32Gb',
+  myCost: 340,
+  competitorCost: 290,
+  dumping: 50,
+  time: 2017-09-06T20:55:49.480Z }
+{ name: 'Microsoft Lumia 640 LTE Dual SIM',
+  myCost: 266,
+  competitorCost: 259,
+  dumping: 7,
+  time: 2017-09-06T20:56:37.310Z }
