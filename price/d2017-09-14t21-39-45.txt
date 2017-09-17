@@ -1,6 +1,0 @@
-start
-{ name: 'LG X155 Max',
-  myCost: 19000,
-  competitorCost: 190,
-  dumping: 18810,
-  time: 2017-09-14T18:39:55.945Z }

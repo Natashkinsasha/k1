@@ -150,7 +150,11 @@ function migom() {
                                     });
 
                             })
-                            .catch(console.log)
+                            .catch(function (e) {
+                                console.log(e);
+                                return driver
+                                    .get('http://www.migom.by/mobile/')
+                            })
                     }
                 })
         })
