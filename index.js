@@ -58,9 +58,6 @@ var argv = optimist.argv;
 var delay = argv.delay || config.get('delay');
 var startWith = argv.startWith || config.get('startWith');
 
-console.log(argv)
-
-console.log(argv._.indexOf('k1'))
 if (argv._.indexOf('k1') >= 0) {
     k1();
 } else {
@@ -69,6 +66,7 @@ if (argv._.indexOf('k1') >= 0) {
 
 function migom() {
     var url = argv.url || config.get('urlmigom');
+    const errorGoodName = [];
     return driver
         .get('http://www.migom.by/mobile/')
         .then(function () {
@@ -133,6 +131,7 @@ function migom() {
                                             });
                                     })
                                     .then(function (goods) {
+                                        console.log(goods)
                                         return goods
                                             .filter(function (good) {
                                                 return good.name === goodName;
@@ -152,6 +151,7 @@ function migom() {
                             })
                             .catch(function (e) {
                                 console.log(e);
+                                errorGoodName.push(goodName);
                                 return driver
                                     .get('http://www.migom.by/mobile/')
                             })
@@ -159,6 +159,7 @@ function migom() {
                 })
         })
         .then(function () {
+            console.log({errorGoodName: errorGoodName});
             console.log('Скрипт закончил свое выполнение')
         })
         .catch(console.log);
@@ -167,6 +168,7 @@ function migom() {
 
 function k1() {
     var url = argv.url || config.get('urlk1');
+    const errorGoodName = [];
     return driver
         .get('https://phone.1k.by/mobile/')
         .then(function () {
@@ -255,11 +257,17 @@ function k1() {
                                     });
 
                             })
-                            .catch(console.log)
+                            .catch(function (e) {
+                                console.log(e);
+                                errorGoodName.push(goodName);
+                                return driver
+                                    .get('https://phone.1k.by/mobile/');
+                            })
                     }
                 })
         })
         .then(function () {
+            console.log({errorGoodName: errorGoodName});
             console.log('Скрипт закончил свое выполнение')
         })
         .catch(console.log);
