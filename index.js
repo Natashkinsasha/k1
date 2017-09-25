@@ -131,10 +131,9 @@ function migom() {
                                             });
                                     })
                                     .then(function (goods) {
-                                        console.log(goods)
                                         return goods
                                             .filter(function (good) {
-                                                return good.name === goodName;
+                                                return good.name === "Мобильный телефон "+goodName;
                                             })[0].cost
                                     })
                                     .then(function (costString) {
