@@ -51,6 +51,7 @@ function saveScreenshot() {
     })
 }
 
+console.log('test');
 
 driver.saveScreenshot = saveScreenshot.bind(driver);
 
